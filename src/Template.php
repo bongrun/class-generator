@@ -14,7 +14,7 @@ class Template
     private $extends;
     private $implements;
 
-    public function __construct(string $nameSpace, string $className, array $methods, array $properties = [], array $uses = [], array $classComments = [], $extends = null, $implements = [])
+    public function __construct(string $nameSpace, string $className, array $methods, array $properties = [], array $constants = [], array $uses = [], array $classComments = [], $extends = null, $implements = [])
     {
         $this->nameSpace = $nameSpace;
         $this->className = $className;
@@ -28,7 +28,6 @@ class Template
 
     public function getCode()
     {
-        var_dump($this->properties);
         return sprintf(
             "<?php
 

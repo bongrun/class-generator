@@ -1,5 +1,8 @@
 {
   "name": "bongrun/class-generator",
   "require": {
+  },
+  "autoload": {
+    "psr-4": {"bongrun\\generator\\": "src/"}
   }
 }

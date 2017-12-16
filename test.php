@@ -1,11 +1,9 @@
 <?php
 
-include 'src/Method.php';
-include 'src/Template.php';
+include 'vendor/autoload.php';
 
-$template = new \bongrun\generator\Template(
-    'bongrun\\test',
-    'TestClass',
+$generator = new \bongrun\generator\Generator(__DIR__ . '/src/test', 'bongrun\generator\test', true);
+$generator->run('TestClass',
     [
         new \bongrun\generator\Method([
             'name' => 'nameFunc',
@@ -46,9 +44,10 @@ $template = new \bongrun\generator\Template(
             ]
         ],
     ],
+    [],
     [
-        'bongrun\\test\\User',
-        'bongrun\\test\\UserInterface',
+        \bongrun\generator\test\User::class,
+        \bongrun\generator\test\UserInterface::class,
     ],
     [
         'Тестовый класс'
@@ -57,5 +56,3 @@ $template = new \bongrun\generator\Template(
     [
         'UserInterface'
     ]);
-
-file_put_contents('class.php', $template->getCode());
