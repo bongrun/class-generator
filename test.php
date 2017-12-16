@@ -46,13 +46,13 @@ $generator->run('TestClass',
     ],
     [],
     [
-        \bongrun\generator\test\User::class,
-        \bongrun\generator\test\UserInterface::class,
+//        \bongrun\generator\test\User::class,
+//        \bongrun\generator\test\UserInterface::class,
     ],
     [
         'Тестовый класс'
     ],
-    'User',
+    \bongrun\generator\test\User::class,
     [
-        'UserInterface'
+        \bongrun\generator\test\UserInterface::class
     ]);

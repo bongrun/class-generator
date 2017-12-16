@@ -31,13 +31,11 @@ class Generator
             require_once $this->getPath($className);
             $reflectionClass = new \ReflectionClass($this->getClassFullName($className));
             if ($reflectionClass->getParentClass()) {
-                $extends = static::getClassName($reflectionClass->getParentClass()->name);
-                $uses[] = $reflectionClass->getParentClass()->name;
+                $extends = $reflectionClass->getParentClass()->name;
             }
             if ($reflectionClass->getInterfaces()) {
                 $implements = array_map(function ($interface) use($uses) {
-                    $uses[] = $interface->name;
-                    return static::getClassName($interface->name);
+                    return $interface->name;
                 }, $reflectionClass->getInterfaces());
             }
             if ($reflectionClass->getDocComment()) {
@@ -110,6 +108,12 @@ class Generator
             unset($param);
             $method->setParams($params);
         }
+        $uses[] = $extends;
+        $extends = static::getClassName($extends);
+        $implements = array_map(function ($interface) {
+            $uses[] = $interface;
+            return static::getClassName($interface);
+        }, $implements);
         $uses = array_unique($uses);
         $uses = array_filter($uses, function ($use) use ($className) {
             return static::getNamespace($use) !== static::getNamespace($this->getClassFullName($className));
