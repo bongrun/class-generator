@@ -61,7 +61,6 @@ class Method
     {
         $this->isValid();
         if (!is_null($this->setting['codeFull'])) {
-            var_dump($this->setting['commentFull']);
             return (!is_null($this->setting['commentFull']) && $this->setting['commentFull'] ? "    " . $this->setting['commentFull'] . "\n" : '') .
                 "    " . trim($this->setting['codeFull']);
         } else {
