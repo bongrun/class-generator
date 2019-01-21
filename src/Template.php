@@ -40,7 +40,7 @@ class %s%s%s
             ,
             $this->nameSpace,
             ($this->uses ? PHP_EOL . 'use ' . implode(';' . PHP_EOL . 'use ', $this->uses) . ';' . PHP_EOL : ''),
-             ($this->classComments ? PHP_EOL . "/**" . PHP_EOL . ' * ' . implode(PHP_EOL . '    * ', $this->classComments) . PHP_EOL . '*/' : ''),
+            ($this->classComments ? PHP_EOL . "/**" . PHP_EOL . ' * ' . implode(PHP_EOL . '    * ', $this->classComments) . PHP_EOL . '*/' : ''),
             $this->className,
             ($this->extends ? ' extends ' . $this->extends : ''),
             ($this->implements ? ' implements ' . implode(', ', $this->implements) : ''),

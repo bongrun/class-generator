@@ -100,9 +100,9 @@ class Generator
             }
             $params = $method->getParams();
             foreach ($params as &$param) {
-                if (isset($params['type']) && !in_array($params['type'], ['string', 'int', 'array', 'float'])) {
-                    $uses[] = $params['type'];
-                    $params['type'] = static::getClassName($params['type']);
+                if (isset($param['type']) && !in_array($param['type'], ['string', 'int', 'array', 'float'])) {
+                    $uses[] = $param['type'];
+                    $param['type'] = static::getClassName($param['type']);
                 }
             }
             unset($param);
